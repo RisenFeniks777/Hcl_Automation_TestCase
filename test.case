@@ -1,0 +1,40 @@
+import time
+from selenium.webdriver import Chrome
+from selenium.webdriver.common.by import By
+
+path = r"C:\Users\Firripu\Downloads\chromedriver_win32\chromedriver.exe"
+
+driver = Chrome(executable_path=path)
+driver.get("https://www.hcl.hr/")
+
+time.sleep(3)
+
+# Maximize browser
+
+driver.maximize_window()
+
+# Sign in
+
+driver.find_element_by_xpath('//*[@id="authActions"]/li[1]/a').click()
+
+# Waiting driver to switch to dialog box
+
+driver.implicitly_wait(5)
+
+# enter email
+
+driver.find_element(by=By.NAME, value="email").send_keys("fcevizovic@gmail.com")
+
+# enter the password
+
+
+driver.find_element(by=By.NAME, value="password").send_keys("22312231")
+
+# click prijava
+time.sleep(3)
+
+driver.find_element_by_xpath('//*[@id="login"]/div[1]/div[2]/form/input[3]').click()
+
+time.sleep(3)
+
+driver.close()
